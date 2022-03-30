@@ -3,6 +3,13 @@ set number
 set showcmd
 let mapleader=";"
 
+filetype plugin indent on
+filetype on
+filetype indent on
+
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
+
 " --- vimplug
 call plug#begin()
 
@@ -22,6 +29,10 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 " nodejs / ts
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
+" ruby / rails 
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+
 call plug#end()
 " --- vimplug#end
 
@@ -39,6 +50,7 @@ colorscheme material
 nnoremap <silent> <C-t> :NERDTreeToggle<CR>
 nnoremap <silent> <C-n> :NERDTree<CR>
 let NERDTreeShowHidden=1
+map ] :NERDTreeFind<CR>
 
 " --- Fzf
 nnoremap <silent> <C-f> :Files<CR>

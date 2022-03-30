@@ -6,16 +6,18 @@ let mapleader=";"
 " --- vimplug
 call plug#begin()
 
-" editors
+" editor
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
 
 " themes
 Plug 'tanvirtin/monokai.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 " nodejs / ts
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -25,7 +27,10 @@ call plug#end()
 
 
 " --- Theme stuffs
-colorscheme monokai
+"colorscheme monokai
+let g:material_theme_style = 'palenight'
+colorscheme material
+
 
 
 " --- Plugin configurations
@@ -70,4 +75,17 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
